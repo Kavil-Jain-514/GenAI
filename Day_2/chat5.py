@@ -29,20 +29,15 @@ messages = [
     { "role": "system", "content": system_prompt },
 ]
 
-query = input("> ")
-messages.append({ "role": "user", "content": query })
-
 while True:
+    query = input("> ")
+    messages.append({ "role": "user", "content": query })
+    if query == "Bye":
+        print("Good Bye 👋🏻")
+        break
     result = client.chat.completions.create(
         model="gpt-4",
         messages=messages
         )
     parsed_response = result.choices[0].message.content
-
-    if parsed_response != "Bye":
-        print(parsed_response)
-        continue
-    else:
-        break
-    
-
+    print(parsed_response)
