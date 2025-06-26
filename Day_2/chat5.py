@@ -38,7 +38,6 @@ while True:
         messages=messages
         )
     parsed_response = result.choices[0].message.content
-    messages.append({ "role": "assistant", "content": parsed_response})
 
     if parsed_response != "Bye":
         print(parsed_response)
